@@ -1,0 +1,62 @@
+parser: babel-eslint
+
+plugins:
+  - flowtype
+  - prettier
+  - react-hooks
+
+extends:
+  - airbnb
+  - prettier
+
+env:
+  node: true
+  browser: false
+
+rules:
+  prettier/prettier:
+    - warn
+
+  eqeqeq: [error, smart]
+  no-undef: off
+  no-dupe-keys: error
+  no-return-assign: off
+  consistent-return: off
+
+  no-use-before-define: off
+  no-param-reassign: off
+  class-methods-use-this: off
+  no-redeclare: off
+
+  import/named: off
+  import/order: off
+  import/prefer-default-export: off
+  import/no-extraneous-dependencies: off
+
+  react/prop-types: off
+  react/require-default-props: off
+  react/jsx-one-expression-per-line: off
+  react/jsx-closing-bracket-location: off
+  react/destructuring-assignment: off
+  react/jsx-indent: off
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+        - .js
+
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
+
+  flowtype/define-flow-type: error
+  flowtype/no-mutable-array: error
+  flowtype/no-types-missing-file-annotation: error
+  flowtype/require-valid-file-annotation: [error, never, { annotationStyle: block }]
+  flowtype/type-id-match: [error, '^[A-Z][a-z0-9]*']
+  flowtype/use-flow-type: error
+
+  'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
+
+settings:
+  'import/resolver':
+    webpack:
+      config: 'webpack.config.js'

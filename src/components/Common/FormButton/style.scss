@@ -1,0 +1,78 @@
+@import 'Theme/assets/styles/_variables';
+
+.form-button {
+  // padding: 0 24px;
+  min-width: 83px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  &:hover {
+    background: #1350f8;
+    cursor: pointer;
+  }
+
+  &.small {
+    height: 40px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  &.white {
+    background: $color1;
+    color: $color7;
+    &:hover {
+      color: $color7;
+      background: $color2;
+    }
+  }
+  &.light-grey {
+    background: $color2;
+    color: $color7;
+    &:hover {
+      color: $color2;
+      background: $color7;
+    }
+  }
+  &.grey {
+    background: $color4;
+    color: $color1;
+    &:hover {
+      color: $color4;
+      background: $color1;
+    }
+  }
+  &.dark-grey {
+    background: $color6;
+    color: $color1;
+    &:hover {
+      color: $color6;
+      background: $color1;
+    }
+  }
+  &.black {
+    background: $color7;
+    color: $color1;
+    &:hover {
+      color: $color1;
+      background: $color6;
+    }
+  }
+  &:disabled {
+    background: $color4;
+    color: $color1;
+    &:hover {
+      background: $color4;
+      color: $color1;
+    }
+  }
+}

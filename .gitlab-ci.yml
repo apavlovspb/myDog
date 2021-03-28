@@ -1,0 +1,36 @@
+image: node:10.15.3-alpine
+
+stages:
+  - deploy
+
+deploy_stage:
+  stage: deploy
+  before_script:
+    - which ssh-agent || ( apk add --no-cache openssh-client )
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - ssh-keyscan 172.105.80.181 >> ~/.ssh/known_hosts
+    - chmod 700 ~/.ssh
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh app@172.105.80.181 'cd /data/app/current/admin && git checkout . && git pull'
+    - ssh app@172.105.80.181 'cd /data/app/current/admin && yarn && yarn build'
+  only:
+    - stage
+
+deploy_master:
+  stage: deploy
+  before_script:
+    - which ssh-agent || ( apk add --no-cache openssh-client )
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - ssh-keyscan 139.162.188.137 >> ~/.ssh/known_hosts
+    - chmod 700 ~/.ssh
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh app@139.162.188.137 'cd /data/app/current/admin && git checkout . && git pull'
+    - ssh app@139.162.188.137 'cd /data/app/current/admin && yarn && yarn build'
+  only:
+    - master

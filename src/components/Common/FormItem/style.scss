@@ -1,0 +1,67 @@
+@import 'Theme/assets/styles/_variables';
+.form-item {
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 40px;
+  width: 100%;
+  padding: 0 20px;
+  border: none;
+  font-size: 14px;
+  line-height: 16px;
+
+  &-group {
+    position: relative;
+    &.white {
+      > .form-item {
+        background: $color1;
+        color: $color7;
+        border: 1px solid $color3;
+      }
+      .form-item__label {
+        background: $color1;
+      }
+    }
+
+    &.black {
+      > .form-item {
+        background: $color7;
+        color: $color1;
+        border: 1px solid $color5;
+      }
+      .form-item__label {
+        background: $color7;
+      }
+    }
+  }
+  &::placeholder {
+    font-size: 12px;
+    line-height: 14px;
+    color: #a9a9a9;
+  }
+  &__label {
+    padding: 0px 6px;
+    position: absolute;
+    //  width: 53px;
+    height: 14px;
+    left: 12px;
+    background: white;
+    display: none;
+    color: #a9a9a9;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  &.not-empty,
+  &:-webkit-autofill {
+    + .form-item__label {
+      top: -6px;
+      display: block;
+    }
+  }
+}
+// .divHacher {
+//   position: absolute;
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: center;
+// }
